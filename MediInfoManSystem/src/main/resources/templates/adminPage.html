@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin:Medical Information Management System</title>
+<link rel="icon" type="image/gif/png" href="image/title.png">
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	
+
+</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="image/medical-2.jpg" width="100%"
+			height="620px">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			 <span class="link"><a th:href="@{__${#httpServletRequest.requestURI}__/employeeProfile}">Profile</a></span>
+				<span class="link"><a href="/logout">Logout</a></span>
+			<div class="formpart">
+			   
+				<span class="link"><a th:href="@{__${#httpServletRequest.requestURI}__/doctorRegister}">Doctor Registration</a></span>
+				<span class="link"><a th:href="@{__${#httpServletRequest.requestURI}__/employeeRegister}">Employee Registration</a></span>
+				 
+
+			</div>
+
+
+
+		</div>
+
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+	</script>
+
+
+</body>
+</html>
