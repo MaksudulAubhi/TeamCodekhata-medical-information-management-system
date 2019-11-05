@@ -6,7 +6,7 @@ Team members:<br>
 3.Sharmin Sultana Suchi<br>
 4.Md. Nazim Uddin
 
-#Tools
-1.Spring boot
-2.Hibernate
-3.HTML Thymleaf
+#Tools<br>
+1.Spring boot <br>
+2.Hibernate   <br>
+3.HTML Thymleaf <br>
