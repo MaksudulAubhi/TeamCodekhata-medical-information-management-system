@@ -2,7 +2,7 @@
 # Tools<br>
 1.Spring boot <br>
 2.Hibernate   <br>
-3.HTML Thymleaf <br>
+3.Thymleaf <br>
 
 # Worklist<br>
 WORKLIST.md
