@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Patient Admit:Medical Information Management System</title>
+<link rel="icon" type="/image/gif/png" href="/image/title.png">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style type="text/css">
+
+</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="/image/medical-2.jpg" width="100%"
+			height="1300">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			<span class="link"><a href="/receptionistPage">Home</a></span>
+			<div class="formpart">
+				<h4>Patient Admit</h4>
+
+
+				<form>
+
+					<input type="text" name=name placeholder="Enter patient name"
+						required autofocus> <input type="email" name=email
+						placeholder="Enter patient email" required autofocus> <input
+						type="text" name=phone placeholder="Enter patient phone" required
+						autofocus><br>
+					<br>
+					<br> <input type="password" name=password
+						placeholder="Enter patient password" required autofocus> <input
+						type="text" name="address" placeholder="Enter patient address"
+						required autofocus> <input type="number" name="age"
+						placeholder="Enter patient age" required autofocus><br>
+					<br>
+					<br> <input type="text" name="medicalHistory"
+						placeholder="Enter patient medical history" required autofocus>
+					<input type="number" name="ward" placeholder="Enter ward number"
+						required autofocus> <input type="number" name="bed"
+						placeholder="Enter bed number" required autofocus><br>
+					<br>
+					<br> <input type="text" name="admitCause"
+						placeholder="Enter patient admit cause" required autofocus>
+					<input type="number" name="doctorTreatId"
+						placeholder="Enter doctor id " required autofocus> <input
+						type="text" name="position" placeholder="Enter patient position"
+						required autofocus><br>
+					<br>
+					<br> <input type="number" name="labNumber"
+						placeholder="Enter patient lab number" required autofocus>
+					<input type="text" name="tets" placeholder="Enter patient tests"
+						required autofocus><br>
+					<br>
+					<br> <label>Gender:</label> <select>
+						<option th:text="Male"></option>
+						<option th:text="Female"></option>
+						<option th:text="Other"></option>
+					</select> <label>Role:</label> <select>
+						<option th:value="10" th:text="Patient"></option>
+
+					</select> <label>Type:</label> <select>
+						<option th:text="Emmergency"></option>
+						<option th:text="General"></option>
+						<option th:text="Chechup"></option>
+					</select> <br>
+					<br>
+					<br> <label>Expected release date:</label> <input type="time"
+						name="releaseTime" autofocus> <br>
+					<br>
+					<br> <label>Death date and time:</label> <input
+						type="datetime-local" name="deathTime" autofocus> <input
+						type="text" name="deathCause"
+						placeholder="Enter patient death cause" autofocus> <br>
+					<br> <label>Status:</label> <select>
+						<option th:text="Pending"></option>
+						<option th:text="Verified"></option>
+					</select><br>
+					<br>
+					<br> <label>Enter Extra Information:</label><br>
+					<textarea rows="5" cols="50" name="extra"
+						placeholder="example:[address:ctg][city:ctg]"></textarea>
+					<br>
+					<br> <input type="submit" value="SUBMIT" id="submit">
+
+				</form>
+
+			</div>
+
+
+		</div>
+
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+	</script>
+
+
+</body>
+</html>
