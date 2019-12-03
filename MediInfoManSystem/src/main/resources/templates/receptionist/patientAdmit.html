@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Patient Admit:Medical Information Management System</title>
+<link rel="icon" type="/image/gif/png" href="/image/title.png">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="/image/medical-2.jpg" width="100%"
+			height="1300">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			<span class="link"><a href="/receptionistPage">Home</a></span>
+			<div class="formpart">
+				<h4>Patient Admit</h4>
+
+
+				<form action="#" th:action="@{__${#httpServletRequest.requestURI}__}" th:object="${patient}" method="post">
+
+				<input type="text"  th:field="*{name}" placeholder="Enter patient name" required autofocus>
+				<input type="email"  th:field="*{email}"	placeholder="Enter patient email" required autofocus> 
+				<input type="text"  th:field="*{phone}" placeholder="Enter patient phone" required autofocus>
+                <br> <br> <br>
+				<input type="password"  th:field="*{password}" placeholder="Enter patient password" required autofocus>
+				<input type="text"  th:field="*{address}"placeholder="Enter patient address" required autofocus>
+                <input  type="number"   th:field="*{age}" placeholder="Enter patient age" required autofocus><br> <br> <br> 
+			    <input	type="number"  th:field="*{wardNumber}" placeholder="Enter ward number"  autofocus>
+				<input type="number"  th:field="*{bedNumber}"	placeholder="Enter bed number"  autofocus>	
+				<input type="number"  th:field="*{labNumber}"	placeholder="Enter patient lab number"  autofocus>	<br> <br> <br> 
+				
+				
+				
+                 <input type="number"  th:field="*{doctorId}" placeholder="Enter Doctor ID" required autofocus><br> <br> <br> 
+					<br> <br><br>
+					<label>Gender:</label> 
+					<select th:field="*{gender}">
+						<option th:value="Male"   th:text="Male"></option>
+						<option th:value="Female" th:text="Female"></option>
+						<option th:value="Other"  th:text="Other"></option>
+					</select>
+					 <label>Role:</label> 
+					 <select th:field="*{roles}">
+						<option th:value="10" th:text="Patient"></option>
+					</select> 
+					<label>Type:</label>
+					 <select th:field="*{type}">
+						<option th:value="Emmergency"  th:text="Emmergency"></option>
+						<option th:value="General"  th:text="General"></option>
+						<option th:value="Checkup"  th:text="Chechup"></option>
+					</select>
+					 <br> <br> <br> 
+					 <label> Release date:</label> 
+					 <input th:field="*{realeseDate}" type="date" name="releaseTime" autofocus> <br> <br>
+						
+					<br> 
+					<label>Death date and time:</label>
+					<input th:field="*{deathDate}" type="datetime-local" name="deathTime" autofocus> 
+					<input type="text" th:field="*{deathCause}"   placeholder="Enter patient death cause" autofocus>
+					<br><br>
+					 <label>Status:</label> 
+					 <select th:field="*{status}">
+						<option th:value="Pending" th:text="Pending"></option>
+						<option th:value="Verified" th:text="Verified"></option>
+					</select>
+					<br> <br> <br>
+					 <label>Enter Extra
+						Information:</label>
+						<br>
+					<textarea th:field="*{extrainfo}" rows="5" cols="50" name="extra"
+						placeholder="example:[address:ctg][city:ctg]"></textarea>
+					<br> <br> <input type="submit" value="SUBMIT" id="submit">
+                    
+                    <br><br>
+                    
+				<span id="emessage" th:utext="${errorMessage}"></span>
+				<span id="smessage" th:utext="${successMessage}"></span>
+				
+				<div th:if="${(bindingResult!=null && bindingResult.getAllErrors()!=null)}">
+					<ul th:each="data: ${bindingResult.getAllErrors()}">
+					<li th:text="${data.getObjectName()+}'::'+data.getDefaultMessage()}"></li>
+					
+					</ul>
+				
+				</div>
+				</form>
+
+			</div>
+
+
+		</div>
+
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+	</script>
+
+
+</body>
+</html>

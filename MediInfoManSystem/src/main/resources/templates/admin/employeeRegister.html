@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Register Employee:Medical Information Management System</title>
+<link rel="icon" type="image/gif/png" href="/image/title.png">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="/image/medical-2.jpg" width="100%"
+			height="1150px">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			<span class="link"><a href="/adminPage">Home</a></span>
+			<div class="formpart">
+			<h4>Register employee</h4>
+			
+			
+			<form action="#" th:action="@{__${#httpServletRequest.requestURI}__}" th:object="${employee}" method="post">
+			    
+			    <input type="text" th:field="*{name}" placeholder="Enter employee name"  required autofocus>
+				<input type="email"th:field="*{email}" placeholder="Enter employee email" required autofocus><br><br>
+				<input type="tel" th:field="*{phone}"  placeholder="Enter employee phone" required autofocus>
+				<input type="password" th:field="*{password}"  placeholder="Enter employee password" required autofocus><br><br>
+				<input type="text" th:field="*{address}"  placeholder="Enter employee address" required autofocus>
+				<input type="text" th:field="*{title}"  placeholder="Enter employee job description" required autofocus><br><br>
+				<input type="text" th:field="*{office}"  placeholder="Enter employee office details" required autofocus>
+				<input type="text"  th:field="*{schedule}"  placeholder="Enter employee schedule" required autofocus><br><br>
+				<input type="text" th:field="*{salary}"  placeholder="Enter employee salary" required autofocus>
+				<input type="date" th:field="*{joindate}"  placeholder="Enter employee join date" required autofocus><br><br><br>
+				<input type="text" th:field="*{birthdate}"  placeholder="Enter employee birth date" required autofocus>
+				<input type="text" th:field="*{birthyear}"  placeholder="Enter employee birth year" required autofocus><br><br>
+				<input type="text" th:field="*{birthmonth}"  placeholder="Enter employee birth month" required autofocus><br><br><br>
+				
+				
+				<label>Gender:</label>
+				<select th:field="*{gender}">
+				    <option value="Select Gender" disabled>Select Gender</option>
+					<option th:value="Male" th:text="Male"></option>
+					<option th:value="Female" th:text="Female"></option>
+					<option th:value="Other" th:text="Other"></option>
+				</select>
+				<label>Role:</label>
+				<select th:field="*{roles}">
+				    
+				    <option th:value="1" th:text="Admin"></option>
+				    <option th:value="2" th:text="Transport"></option>
+				    <option th:value="3" th:text="Pharmacy"></option>
+				    <option th:value="4" th:text="Officer"></option>
+				    <option th:value="5" th:text="Lab"></option>
+				    <option th:value="6" th:text="Nurse"></option>
+				    <option th:value="7" th:text="Receptionist"></option>
+				   
+				</select>
+				<label>Status:</label>
+				<select  th:field="*{status}">
+					<option th:value="Pending" th:text="Pending"></option>
+					<option th:value="Verified" th:text="Verified"></option>
+				</select><br><br><br>
+				<label>Enter Extra Information:</label><br>
+				<textarea th:field="*{extrainfo}" rows="5" cols="50" name="extra" placeholder="example:[address:ctg][city:ctg]"></textarea>
+				<br><br>
+				<input type="submit" value="SUBMIT" id="submit">
+				<br><br>
+				<span id="emessage" th:utext="${errorMessage}"></span>
+				<span id="smessage" th:utext="${successMessage}"></span>
+				
+				<div th:if="${(bindingResult!=null && bindingResult.getAllErrors()!=null)}">
+					<ul th:each="data: ${bindingResult.getAllErrors()}">
+					<li th:text="${data.getObjectName()+}'::'+data.getDefaultMessage()}"></li>
+					
+					</ul>
+				
+				</div>
+			</form>
+
+		</div>
+		
+	
+		</div>
+		
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+	</div>
+	
+	
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+	</script>
+		
+
+</body>
+</html>
