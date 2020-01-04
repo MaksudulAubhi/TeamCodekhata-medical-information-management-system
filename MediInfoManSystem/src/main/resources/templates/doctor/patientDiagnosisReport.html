@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Diagnosis Report:Medical Information Management System</title>
+<link rel="icon" type="image/gif/png" href="/image/title.png">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.tablePart{
+    position:absolute;
+ 	background:rgba(0,0,0,0.6);
+ 	padding:22px;
+ 	font-size:17px;	
+ 	margin:40px;
+ 	width:auto;
+
+
+}
+
+table,th,td{
+	border:2px solid black;
+	border-collapse:collapse;
+	background:;
+	
+}
+th,td{
+	padding:10px;
+	text-align:left;
+}
+tr:hover{
+	background:rgba(0,0,0,0.2);
+}
+.tablePart input{
+ 	padding:10px 50px 10px 50px;
+ 	
+ }
+ #count{
+ 	color:#f0e9ea;
+ }
+
+
+
+</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="/image/medical-2.jpg" width="100%"
+			height="1150px">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			
+			<div th:switch="${role}">
+				<span th:case="'[Doctor]'" class="link"><a th:href="@{/doctorPage}">Home</a></span>
+				<span th:case="'[Nurse]'" class="link"><a th:href="@{/nursePage}">Home</a></span>
+				<span th:case="'[Head]'" class="link"><a th:href="@{/headDoctorPage}">Home</a></span>
+				
+			</div>
+			
+			<div class="tablePart" >
+				<h3>Report List</h3>
+				
+			   Total Report: <p id="count"></p>
+			   <p id=message th:utext="${message}"></p>
+			   <input type="text" id="empSearch" onKeyUp="myFunction()" placeholder="search report id">
+			   <br><br>
+				<table id="empTable" >
+					<thead>
+						<tr>
+							
+							<th>Report ID</th>
+							<th>Patient ID</th>
+							<th>Referred Doctor</th>
+						
+							<th th:if="${role=='[Nurse]'}">View Report</th>
+							<th th:if="${role=='[Doctor]'}">View Report</th>
+							<th th:if="${role=='[Head]'}">View Report</th>
+							
+						<tr>
+					</thead>
+					<tbody th:each="data : ${reportList}">
+							
+						<tr th:if="${data.patientId == patient.id}">
+						 	
+							<td th:text="${data.id}"></td>
+							<td th:text="${data.patientId}"></td>
+							<td th:text="${data.refDoctor}"></td>
+							
+						
+							
+							<td th:if="${role=='[Nurse]'}"><a th:href="@{__${#httpServletRequest.requestURI}__/diagnosisReportView/__${data.id}__}" th:utext="View"></a></td>
+							<td th:if="${role=='[Doctor]'}"><a th:href="@{__${#httpServletRequest.requestURI}__/diagnosisReportView/__${data.id}__}" th:utext="View"></a></td>
+							<td th:if="${role=='[Head]'}"><a th:href="@{__${#httpServletRequest.requestURI}__/diagnosisReportView/__${data.id}__}" th:utext="View"></a></td>
+							
+							
+						</tr>
+
+					</tbody>
+
+				</table>
+                
+			</div>
+
+
+		</div>
+
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+
+	</div>
+    <script>
+    	var table =document.getElementById("empTable");
+    	var rowCount=table.rows.length-2;
+    	document.getElementById("count").innerHTML = rowCount;
+    
+    </script>
+
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+	</script>
+	
+	<script>
+	
+	function myFunction(){
+		var input,filter,table,tr,td,i,txtValue;
+		input=document.getElementById("empSearch");
+		filter=input.value.toUpperCase();
+		table=document.getElementById("empTable");
+		tr=table.getElementsByTagName("tr");
+		
+		for(i=0;i<tr.length;i++){
+			td=tr[i].getElementsByTagName("td")[0];
+			
+			if(td){
+				txtValue=td.textContent || td.innerText;
+				if(txtValue.toUpperCase().indexOf(filter) > -1){
+					tr[i].style.display="";
+				}else{
+					tr[i].style.display="none";
+				}
+			}
+		}
+	}
+	
+	</script>
+   
+    <script>
+    	function alert(){
+    		confirm("Confirm to Remove this user");
+    	}
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Report:Medical Information Management System</title>
+<link rel="icon" type="image/gif/png" href="/image/title.png">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	.tablePart{
+    position:absolute;
+ 	background:rgba(0,0,0,0.6);
+ 	padding:22px;
+ 	font-size:17px;	
+ 	margin:40px;
+ 	width:auto;
+ 	
+
+
+}
+
+table,th,td{
+	border:2px solid black;
+	border-collapse:collapse;
+	
+	
+}
+th,td{
+	padding:10px;
+	text-align:left;
+}
+th,#discuss{
+	background:rgba(0,0,0,0.7);
+}
+td:hover{
+	background:rgba(0,0,0,0.2);
+}
+.tablePart input{
+ 	padding:10px 30px 10px 30px;
+ 	
+ }
+ #count{
+ 	color:#f0e9ea;
+ }
+ .tablePart #submit{
+   background-color:black;
+   color:white;
+  
+   
+ }
+  .tablePart #submit:hover{
+   background-color:white;
+   color:black;
+   
+ }
+
+
+
+
+</style>
+
+
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="/image/medical-2.jpg" width="100%"
+			height="1550px">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			<div th:switch="${role}">
+				<span th:case="'[Officer]'" class="link"><a th:href="@{/officerPage}">Home</a></span>
+				
+				
+			</div>
+			<div class="tablePart">
+			<h4>Edit Report</h4>
+			
+			
+			<form action="#" th:action="@{__${#httpServletRequest.requestURI}__}" th:object="${financial}" method="post">
+			
+				<input type="text" Placeholder="Session" th:field="*{session}" required>
+				<input type='date' placeholder="Create Date" th:field="*{date}" required >
+				<br><br>
+				
+			    <table>
+
+			    	
+			    <thead>
+			    	<tr>
+			    		<th>Serial</th>
+			    		<th>Income (Details)</th>
+			    		<th>Income Cost</th>
+			    		<th>Expense (Details)</th>
+			    		<th>Expense Cost</th>
+			    
+			    		
+			    	
+			    	
+			    	</tr>
+			    
+			    </thead>
+			    <tbody>
+			    	<tr>
+			    		<td>1.</td>
+			    		<td><input type='text' th:field="*{inc1_name}"></td>
+			    		<td><input type='number' id="inc1" th:field="*{inc1_ammount}"></td>
+			    		<td><input type='text' th:field="*{exp1_name}"></td>
+			    		<td><input type='number' id="exp1" th:field="*{exp1_ammount}"></td>
+			  
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>2.</td>
+			    		<td><input type='text' th:field="*{inc2_name}"></td>
+			    		<td><input type='number' id="inc2" th:field="*{inc2_ammount}"></td>
+			    	    <td><input type='text' th:field="*{exp2_name}"></td>
+			    		<td><input type='number' id="exp2" th:field="*{exp2_ammount}"></td>
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>3.</td>
+			    		<td><input type='text' th:field="*{inc3_name}"></td>
+			    		<td><input type='number' id="inc3" th:field="*{inc3_ammount}"></td>
+			    	    <td><input type='text' th:field="*{exp3_name}"></td>
+			    		<td><input type='number' id="exp3" th:field="*{exp3_ammount}"></td>
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>4.</td>
+			    		<td><input type='text' th:field="*{inc4_name}"></td>
+			    		<td><input type='number' id="inc4" th:field="*{inc4_ammount}"></td>
+			    	    <td><input type='text' th:field="*{exp4_name}"></td>
+			    		<td><input type='number' id="exp4" th:field="*{exp4_ammount}"></td>
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>5.</td>
+			    		<td><input type='text' th:field="*{inc5_name}"></td>
+			    		<td><input type='number' id="inc5" th:field="*{inc5_ammount}"></td>
+			    	    <td><input type='text' th:field="*{exp5_name}"></td>
+			    		<td><input type='number' id="exp5" th:field="*{exp5_ammount}"></td>
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>6.</td>
+			    		<td><input type='text' th:field="*{inc6_name}"></td>
+			    		<td><input type='number' id="inc6" th:field="*{inc6_ammount}"></td>
+			    	    <td><input type='text' th:field="*{exp6_name}"></td>
+			    		<td><input type='number' id="exp6" th:field="*{exp6_ammount}"></td>
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>7.</td>
+			    		<td><input type='text' th:field="*{inc7_name}"></td>
+			    		<td><input type='number' id="inc7" th:field="*{inc7_ammount}"></td>
+			    	    <td><input type='text' th:field="*{exp7_name}"></td>
+			    		<td><input type='number' id="exp7" th:field="*{exp7_ammount}"></td>
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>8.</td>
+			    		<td><input type='text' th:field="*{inc8_name}"></td>
+			    		<td><input type='number' id="inc8" th:field="*{inc8_ammount}"></td>
+			    	    <td><input type='text' th:field="*{exp8_name}"></td>
+			    		<td><input type='number' id="exp8" th:field="*{exp8_ammount}"></td>
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>9.</td>
+			    		<td><input type='text' th:field="*{inc9_name}"></td>
+			    		<td><input type='number' id="inc9" th:field="*{inc9_ammount}"></td>
+			    	    <td><input type='text' th:field="*{exp9_name}"></td>
+			    		<td><input type='number' id="exp9" th:field="*{exp9_ammount}"></td>
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>10.</td>
+			    		<td><input type='text' th:field="*{inc10_name}"></td>
+			    		<td><input type='number' id="inc10" th:field="*{inc10_ammount}"></td>
+			    	    <td><input type='text' th:field="*{exp10_name}"></td>
+			    		<td><input type='number' id="exp10" th:field="*{exp10_ammount}"></td>
+			    
+			    	</tr>
+			    	<tr id="discuss">
+			    		<td></td>
+			    		<td th:utext="Total"></td>
+			    		<td><input type='number' id="totalInc" readonly th:field="*{inc_total}"></td>
+			    		<td th:utext="Total"></td>
+			    		<td><input type='number' id="totalExp" readonly th:field="*{exp_total}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr id="discuss">
+			    		<td></td>
+			    		<td></td>
+			    		<td th:utext="Profit"></td>
+			    		<td><input type='number' id="profit" th:field="*{profit}" readonly></td>
+			    		<td></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr id="discuss">
+			    		<td></td>
+			    		<td ></td>
+			    		<td th:utext="loss"></td>
+			    		<td><input type='number' id="loss" readonly th:field="*{loss}"></td>
+			    	    <td></td>
+			    
+			    	</tr>
+			    
+			    
+			    
+			    </tbody>
+			    
+			    
+			    
+			    
+			    </table>
+			    
+			    <br><br>  
+			    
+				<input type="submit" value="SUBMIT" id="submit">
+				<br><br>
+				<span id="emessage" th:utext="${errorMessage}"></span>
+				<span id="smessage" th:utext="${successMessage}"></span>
+				
+				<div th:if="${(bindingResult!=null && bindingResult.getAllErrors()!=null)}">
+					<ul th:each="data: ${bindingResult.getAllErrors()}">
+					<li th:text="${data.getObjectName()+}'::'+data.getDefaultMessage()}"></li>
+					
+					</ul>
+				
+				</div>
+			</form>
+           <button onClick="javascript:add()">Calculate</button>
+		</div>
+		
+	
+		</div>
+		
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+		
+	</div>
+	<script>
+	
+		function add(){
+			var r1=parseFloat(document.getElementById("inc1").value);
+			var r2=parseFloat(document.getElementById("inc2").value);
+			var r3=parseFloat(document.getElementById("inc3").value);
+			var r4=parseFloat(document.getElementById("inc4").value);
+			var r5=parseFloat(document.getElementById("inc5").value);
+			var r6=parseFloat(document.getElementById("inc6").value);
+			var r7=parseFloat(document.getElementById("inc7").value);
+			var r8=parseFloat(document.getElementById("inc8").value);
+			var r9=parseFloat(document.getElementById("inc9").value);
+			var r10=parseFloat(document.getElementById("inc10").value);
+			var ans1=document.getElementById("totalInc");
+			ans1.value=r1+r2+r3+r4+r5+r6+r7+r8+r9+r10;
+			
+			var q1=parseFloat(document.getElementById("exp1").value);
+			var q2=parseFloat(document.getElementById("exp2").value);
+			var q3=parseFloat(document.getElementById("exp3").value);
+			var q4=parseFloat(document.getElementById("exp4").value);
+			var q5=parseFloat(document.getElementById("exp5").value);
+			var q6=parseFloat(document.getElementById("exp6").value);
+			var q7=parseFloat(document.getElementById("exp7").value);
+			var q8=parseFloat(document.getElementById("exp8").value);
+			var q9=parseFloat(document.getElementById("exp9").value);
+			var q10=parseFloat(document.getElementById("exp10").value);
+			var ans2=document.getElementById("totalExp");
+			ans2.value=q1+q2+q3+q4+q5+q6+q7+q8+q9+q10;
+			
+			
+			
+			
+			var profit=document.getElementById("profit");
+			var loss=document.getElementById("loss");
+			
+			
+			if(ans1.value>=ans2.value){
+				 profit.value=ans1.value-ans2.value;
+				 loss.value=0;
+			}
+			if(ans1.value<ans2.value){
+				profit.value=0
+				loss.value=ans2.value-ans1.value;
+			}
+		}
+		
+	
+	</script>
+	
+	
+	
+	
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+		
+		
+	</script>
+		
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Prescription : Medical Information Management System</title>
+<link rel="icon" type="image/gif/png" href="/image/title.png">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.tablePart{
+    position:absolute;
+ 	background:rgba(0,0,0,0.6);
+ 	padding:22px;
+ 	font-size:17px;	
+ 	margin:40px;
+ 	width:auto;
+
+
+}
+
+table,th,td{
+	border:2px solid black;
+	border-collapse:collapse;
+	background:;
+	
+}
+th,td{
+	padding:10px;
+	text-align:left;
+}
+td:hover{
+	background:rgba(0,0,0,0.2);
+}
+h4{
+	float:right;
+
+}
+#profile{
+	
+	padding:5px;
+}
+button{
+ padding:8px;
+ background: black;
+ color: white;
+}
+button:hover{
+	 
+   background: white;
+   color: black;
+
+}
+
+</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="/image/medical-2.jpg" width="100%"
+			height="1100">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			
+				
+			<div th:switch="${role}">
+				<span th:case="'[Doctor]'" class="link"><a th:href="@{/doctorPage}">Home</a></span>
+				<span th:case="'[Nurse]'" class="link"><a th:href="@{/nursePage}">Home</a></span>
+				<span th:case="'[Head]'" class="link"><a th:href="@{/headPage}">Home</a></span>
+			</div>
+			<br>
+			<button id="generate" th:if="${role=='[Doctor]'}">Generate Prescription</button>
+			
+			<div class="tablePart" th:object="${prescription}" id="print">
+			<h3>Prescription</h3>
+			<P  th:utext="${'Prescription ID: '+id}"></P>
+			<P id="profile"  th:utext="${'Patient ID: '+prescription.patientId + ' || Patient Name: '+patientName+' || Patient Age: '+patientAge+' || Patient Gender: '+ patientGender}"></P>
+			<P id="profile" th:utext="${'Doctor ID: '+prescription.doctorId + ' || Doctor Name: '+doctorName +' || Speciality: ' +doctorSpeciality}"></P>
+			<table style="width:100%">
+            <thead>
+            	<tr>
+            	<th>Disease</th>
+            	<th>Medicine</th>
+            	<th>Test</th>
+            	<th>Advice</th>
+            	<th>Extra Information</th>
+            	</tr>
+			</thead>
+			<tbody>
+			    <tr>
+			        <td th:utext="${prescription.disease1 +'<br><br>' + prescription.disease2+'<br><br>' + prescription.disease3+'<br><br>'+ prescription.disease4+'<br><br>'+ prescription.disease5+'<br><br>'
+			                       + prescription.disease6+'<br><br>' + prescription.disease7+'<br><br>' + prescription.disease8+'<br><br>' + prescription.disease9+'<br><br>' + prescription.disease10}">
+			        <td th:utext="${prescription.medicine1 +'<br><br>' + prescription.medicine2+'<br><br>' + prescription.medicine3+'<br><br>'+ prescription.medicine4+'<br><br>'+ prescription.medicine5+'<br><br>'
+			                       + prescription.medicine6+'<br><br>' + prescription.medicine7+'<br><br>' + prescription.medicine8+'<br><br>' + prescription.medicine9+'<br><br>' + prescription.medicine10}">
+			    	<td th:utext="${prescription.test1 +'<br><br>' + prescription.test2+'<br><br>' + prescription.test3+'<br><br>'+ prescription.test4+'<br><br>'+ prescription.test5+'<br><br>'
+			                       + prescription.test6+'<br><br>' + prescription.test7+'<br><br>' + prescription.test8+'<br><br>' + prescription.test9+'<br><br>' + prescription.test10}">
+			    	<td th:utext="${prescription.advice}">
+			    	<td th:utext="${prescription.information}">
+			    	
+			    </tr>
+			</tbody>
+			</table>
+			
+			
+
+		</div>
+		
+	
+		</div>
+		
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+	</div>
+	<script>
+	document.getElementById("generate").addEventListener("click",function(){
+		var printContents=document.getElementById('print').innerHTML;
+		var originalContents=document.body.innerHTML;
+		document.body.innerHTML=printContents;
+		window.print();
+		document.body.innerHTML=originalContents;
+	});
+	
+	</script>
+	
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+	</script>
+		
+
+</body>
+</html>

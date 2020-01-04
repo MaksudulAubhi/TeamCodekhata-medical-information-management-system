@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Billing Report:Medical Information Management System</title>
+<link rel="icon" type="image/gif/png" href="/image/title.png">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.tablePart{
+    position:absolute;
+ 	background:rgba(0,0,0,0.6);
+ 	padding:22px;
+ 	font-size:17px;	
+ 	margin:40px;
+ 	width:auto;
+
+
+}
+
+table,th,td{
+	border:2px solid black;
+	border-collapse:collapse;
+	background:;
+	
+}
+th,#discuss{
+	background:rgba(0,0,0,0.7);
+}
+th,td{
+	padding:10px;
+	text-align:left;
+}
+td:hover{
+	background:rgba(0,0,0,0.2);
+}
+h4{
+	float:right;
+
+}
+button{
+ padding:8px;
+ background: black;
+ color: white;
+}
+button:hover{
+	 
+   background: white;
+   color: black;
+
+}
+
+</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="/image/medical-2.jpg" width="100%"
+			height="1200">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			
+				
+			<div th:switch="${role}">
+				<span th:case="'[Receptionist]'" class="link"><a th:href="@{/receptionistPage}">Home</a></span>
+				<span th:case="'[Head]'" class="link"><a th:href="@{/headPage}">Home</a></span>
+				<span th:case="'[Officer]'" class="link"><a th:href="@{/officerPage}">Home</a></span>
+				
+			</div>
+			<br>
+			<button id="generate" th:if="${role=='[Officer]'}">Generate Report</button>
+			
+			<div class="tablePart" id="print">
+			<h3>Billing Report</h3>
+			<p th:utext="'Report ID: '+${billing.id}"></p>
+			<p th:utext="${'[Patient ID: '+billing.patient_id +'] [Patient Name: '+ patient.name+'] [ Patient Address: '+ patient.address+']'}"></p>
+			<p th:utext="${'[Billing Create:   '+ billing.billing_date}+']'"></p>
+			<br>
+			<table style="width:100%">
+
+			    	
+			    <thead>
+			    	<tr>
+			    		<th>Serial</th>
+			    		<th>Resource (Details)</th>
+			    		<th>Cost (Taka)</th>
+			    
+			    		
+			    	
+			    	
+			    	</tr>
+			    
+			    </thead>
+			    <tbody>
+			    	<tr th:if="${billing.rec1_name !=''}">
+			    		<td>1.</td>
+			    		<td th:utext="${billing.rec1_name}"></td>
+			    		<td th:utext="${billing.rec1_ammount}"></td>
+			  
+			    
+			    	</tr>
+			    	<tr th:if="${billing.rec2_name !=''}">
+			    		<td>2.</td>
+			    		<td th:utext="${billing.rec2_name}"></td>
+			    		<td th:utext="${billing.rec2_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr th:if="${billing.rec3_name !=''}">
+			    		<td>3.</td>
+			    		<td th:utext="${billing.rec3_name}"></td>
+			    		<td th:utext="${billing.rec3_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr th:if="${billing.rec4_name !=''}">
+			    		<td>4.</td>
+			    		<td th:utext="${billing.rec4_name}"></td>
+			    		<td th:utext="${billing.rec4_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr th:if="${billing.rec5_name !=''}">
+			    		<td>5.</td>
+			    		<td th:utext="${billing.rec5_name}"></td>
+			    		<td th:utext="${billing.rec5_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr th:if="${billing.rec6_name !=''}">
+			    		<td>6.</td>
+			    		<td th:utext="${billing.rec6_name}"></td>
+			    		<td th:utext="${billing.rec6_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr th:if="${billing.rec7_name !=''}">
+			    		<td>7.</td>
+			    		<td th:utext="${billing.rec7_name}"></td>
+			    		<td th:utext="${billing.rec7_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr th:if="${billing.rec8_name !=''}">
+			    		<td>8.</td>
+			    		<td th:utext="${billing.rec8_name}"></td>
+			    		<td th:utext="${billing.rec8_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr th:if="${billing.rec9_name !=''}">
+			    		<td>9.</td>
+			    		<td th:utext="${billing.rec9_name}"></td>
+			    		<td th:utext="${billing.rec9_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr th:if="${billing.rec10_name !=''}">
+			    		<td>10.</td>
+			    		<td th:utext="${billing.rec10_name}"></td>
+			    		<td th:utext="${billing.rec10_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr id="discuss">
+			    		<td></td>
+			    		<td th:utext="Total"></td>
+			    		<td th:utext="${billing.rec_total}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr id="discuss">
+			    		<td></td>
+			    		<td th:utext="Paid"></td>
+			    		<td th:utext="${billing.rec_paid}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr id="discuss">
+			    		<td></td>
+			    		<td th:utext="Due"></td>
+			    		<td th:utext="${billing.rec_due}"></td>
+			    	    
+			    
+			    	</tr>
+			    
+			    
+			    
+			    </tbody>
+			    
+			    
+			    
+			    
+			    </table>
+			
+		
+			
+			
+
+		</div>
+		
+	
+		</div>
+		
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+	</div>
+	
+	<script>
+	document.getElementById("generate").addEventListener("click",function(){
+		var printContents=document.getElementById('print').innerHTML;
+		var originalContents=document.body.innerHTML;
+		document.body.innerHTML=printContents;
+		window.print();
+		document.body.innerHTML=originalContents;
+	});
+	
+	</script>
+	
+	
+	
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+	</script>
+	
+		
+
+</body>
+</html>

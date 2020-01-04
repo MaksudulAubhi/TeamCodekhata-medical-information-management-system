@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create Billing:Medical Information Management System</title>
+<link rel="icon" type="image/gif/png" href="/image/title.png">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	.tablePart{
+    position:absolute;
+ 	background:rgba(0,0,0,0.6);
+ 	padding:22px;
+ 	font-size:17px;	
+ 	margin:40px;
+ 	width:700px;
+ 	
+
+
+}
+
+table,th,td{
+	border:2px solid black;
+	border-collapse:collapse;
+	
+	
+}
+th,td{
+	padding:10px;
+	text-align:left;
+}
+th,#discuss{
+	background:rgba(0,0,0,0.7);
+}
+td:hover{
+	background:rgba(0,0,0,0.2);
+}
+.tablePart input{
+ 	padding:10px 50px 10px 50px;
+ 	
+ }
+ #count{
+ 	color:#f0e9ea;
+ }
+ .tablePart #submit{
+   background-color:black;
+   color:white;
+  
+   
+ }
+  .tablePart #submit:hover{
+   background-color:white;
+   color:black;
+   
+ }
+
+
+
+
+</style>
+
+
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="/image/medical-2.jpg" width="100%"
+			height="1550px">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			<div th:switch="${role}">
+				<span th:case="'[Officer]'" class="link"><a th:href="@{/officerPage}">Home</a></span>
+				
+				
+			</div>
+			<div class="tablePart">
+			<h4>Create Bill</h4>
+			
+			
+			<form action="#" th:action="@{__${#httpServletRequest.requestURI}__}" th:object="${billing}" method="post">
+			
+				<input type='number' placeholder="Patient Id" readonly th:field="*{patient_id}" required>
+				<br><br>
+				<input type='date' placeholder="Create Date" th:field="*{billing_date}"  required>
+				<br><br>
+				
+			    <table>
+
+			    	
+			    <thead>
+			    	<tr>
+			    		<th>Serial</th>
+			    		<th>Resource (Details)</th>
+			    		<th>Cost (Taka)</th>
+			    
+			    		
+			    	
+			    	
+			    	</tr>
+			    
+			    </thead>
+			    <tbody>
+			    	<tr>
+			    		<td>1.</td>
+			    		<td><input type='text' th:field="*{rec1_name}"></td>
+			    		<td><input type='number' id="rec1" th:field="*{rec1_ammount}"></td>
+			  
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>2.</td>
+			    		<td><input type='text' th:field="*{rec2_name}"></td>
+			    		<td><input type='number' id="rec2" th:field="*{rec2_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>3.</td>
+			    		<td><input type='text' th:field="*{rec3_name}"></td>
+			    		<td><input type='number' id="rec3" th:field="*{rec3_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>4.</td>
+			    		<td><input type='text' th:field="*{rec4_name}"></td>
+			    		<td><input type='number' id="rec4" th:field="*{rec4_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>5.</td>
+			    		<td><input type='text' th:field="*{rec5_name}"></td>
+			    		<td><input type='number' id="rec5" th:field="*{rec5_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>6.</td>
+			    		<td><input type='text' th:field="*{rec6_name}"></td>
+			    		<td><input type='number' id="rec6" th:field="*{rec6_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>7.</td>
+			    		<td><input type='text' th:field="*{rec7_name}"></td>
+			    		<td><input type='number' id="rec7" th:field="*{rec7_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>8.</td>
+			    		<td><input type='text' th:field="*{rec8_name}"></td>
+			    		<td><input type='number' id="rec8" th:field="*{rec8_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>9.</td>
+			    		<td><input type='text' th:field="*{rec9_name}"></td>
+			    		<td><input type='number' id="rec9" th:field="*{rec9_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr>
+			    		<td>10.</td>
+			    		<td><input type='text' th:field="*{rec10_name}"></td>
+			    		<td><input type='number' id="rec10" th:field="*{rec10_ammount}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr id="discuss">
+			    		<td></td>
+			    		<td th:utext="Total"></td>
+			    		<td><input type='number' id="total" readonly th:field="*{rec_total}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr id="discuss">
+			    		<td></td>
+			    		<td th:utext="Paid"></td>
+			    		<td><input type='number' id="paid" th:field="*{rec_paid}"></td>
+			    	    
+			    
+			    	</tr>
+			    	<tr id="discuss">
+			    		<td></td>
+			    		<td th:utext="Due"></td>
+			    		<td><input type='number' id="due" readonly th:field="*{rec_due}"></td>
+			    	    
+			    
+			    	</tr>
+			    
+			    
+			    
+			    </tbody>
+			    
+			    
+			    
+			    
+			    </table>
+			    
+			    <br><br>  
+			    
+				<input type="submit" value="SUBMIT" id="submit">
+				<br><br>
+				<span id="emessage" th:utext="${errorMessage}"></span>
+				<span id="smessage" th:utext="${successMessage}"></span>
+				
+				<div th:if="${(bindingResult!=null && bindingResult.getAllErrors()!=null)}">
+					<ul th:each="data: ${bindingResult.getAllErrors()}">
+					<li th:text="${data.getObjectName()+}'::'+data.getDefaultMessage()}"></li>
+					
+					</ul>
+				
+				</div>
+			</form>
+           <button onClick="javascript:add()">Calculate</button>
+		</div>
+		
+	
+		</div>
+		
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+		
+	</div>
+	<script>
+	
+		function add(){
+			var r1=parseFloat(document.getElementById("rec1").value);
+			var r2=parseFloat(document.getElementById("rec2").value);
+			var r3=parseFloat(document.getElementById("rec3").value);
+			var r4=parseFloat(document.getElementById("rec4").value);
+			var r5=parseFloat(document.getElementById("rec5").value);
+			var r6=parseFloat(document.getElementById("rec6").value);
+			var r7=parseFloat(document.getElementById("rec7").value);
+			var r8=parseFloat(document.getElementById("rec8").value);
+			var r9=parseFloat(document.getElementById("rec9").value);
+			var r10=parseFloat(document.getElementById("rec10").value);
+			var ans=document.getElementById("total");
+			ans.value=r1+r2+r3+r4+r5+r6+r7+r8+r9+r10;
+			
+			var p=parseFloat(document.getElementById("paid").value);
+			var due=document.getElementById("due");
+			due.value=ans.value-p;
+		}
+		
+	
+	</script>
+	
+	
+	
+	
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+		
+		
+	</script>
+		
+
+</body>
+</html>

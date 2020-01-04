@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee List:Medical Information Management System</title>
+<link rel="icon" type="image/gif/png" href="/image/title.png">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.tablePart{
+    position:absolute;
+ 	background:rgba(0,0,0,0.6);
+ 	padding:22px;
+ 	font-size:17px;	
+ 	margin:40px;
+ 	width:700px;
+
+
+}
+
+table,th,td{
+	border:2px solid black;
+	border-collapse:collapse;
+	background:;
+	
+}
+th,td{
+	padding:10px;
+	text-align:left;
+}
+tr:hover{
+	background:rgba(0,0,0,0.2);
+}
+.tablePart input{
+ 	padding:10px 50px 10px 50px;
+ 	
+ }
+ #count{
+ 	color:#f0e9ea;
+ }
+
+
+
+</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="/image/medical-2.jpg" width="100%"
+			height="1650px">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			<span class="link" th:if="${role=='[Admin]'}"><a href="/adminPage">Home</a></span>
+			<span class="link" th:if="${role=='[Head]'}"><a href="/headPage">Home</a></span>
+			<div class="tablePart">
+				<h3>Employee List</h3>
+				
+			   <p id="count" th:text="${'Total Employee: '+ length}"></p>
+			   <p id=message th:utext="${message}"></p>
+			   <input type="text" id="empSearch" onKeyUp="myFunction()" placeholder="search employee id">
+			   <br><br>
+				<table id="empTable" >
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Role</th>
+							<th th:if="${role=='[Admin]'}">Edit</th>
+							<th>View</th>
+						<!--  	<th>Delete</th> -->
+						<tr>
+					</thead>
+					<tbody th:each="data : ${employeeList}">
+						<tr >
+							<td th:text="${data.id}"></td>
+							<td th:text="${data.name}"></td>
+							<td th:text="${data.Email}"></td>
+							<td></td>
+							<td th:if="${role=='[Admin]'}"><a th:href="@{__${#httpServletRequest.requestURI}__/editEmployee/__${data.id}__}" th:utext="Edit"></a></td>
+							<td ><a th:href="@{__${#httpServletRequest.requestURI}__/viewEmployee/__${data.id}__}" th:utext="View"></a></td>
+						<!--  	<td ><a th:href="@{__${#httpServletRequest.requestURI}__/deleteEmployee/__${data.id}__} " onclick="alert()"  th:utext="Delete"></a></td> -->
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+			</div>
+
+
+		</div>
+
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+
+	</div>
+	
+	
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+	</script>
+	
+	<script>
+	
+	function myFunction(){
+		var input,filter,table,tr,td,i,txtValue;
+		input=document.getElementById("empSearch");
+		filter=input.value.toUpperCase();
+		table=document.getElementById("empTable");
+		tr=table.getElementsByTagName("tr");
+		
+		for(i=0;i<tr.length;i++){
+			td=tr[i].getElementsByTagName("td")[0];
+			
+			if(td){
+				txtValue=td.textContent || td.innerText;
+				if(txtValue.toUpperCase().indexOf(filter) > -1){
+					tr[i].style.display="";
+				}else{
+					tr[i].style.display="none";
+				}
+			}
+		}
+	}
+	
+	</script>
+    
+    <script>
+    	function alert(){
+    		confirm("Confirm to Remove this user");
+    	}
+    </script>
+
+
+</body>
+</html>

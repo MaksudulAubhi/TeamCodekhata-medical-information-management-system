@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Diagnosis Report:Medical Information Management System</title>
+<link rel="icon" type="image/gif/png" href="/image/title.png">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.tablePart{
+    position:absolute;
+ 	background:rgba(0,0,0,0.6);
+ 	padding:22px;
+ 	font-size:17px;	
+ 	margin:40px;
+ 	width:auto;
+ 	
+
+
+}
+
+table,th,td{
+	border:2px solid black;
+	border-collapse:collapse;
+	
+	
+}
+th,td{
+	padding:10px;
+	text-align:left;
+}
+th{
+	background:rgba(0,0,0,0.7);
+}
+td:hover{
+	background:rgba(0,0,0,0.2);
+}
+.tablePart input{
+ 	padding:10px 50px 10px 50px;
+ 	
+ }
+ #count{
+ 	color:#f0e9ea;
+ }
+ .tablePart #submit{
+   background-color:black;
+   color:white;
+  
+   
+ }
+  .tablePart #submit:hover{
+   background-color:white;
+   color:black;
+   
+ }
+
+
+
+</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<img alt="medical system" src="/image/medical-2.jpg" width="100%"
+			height="2100">
+		<div class="content">
+			<h3>Medical Information Management System</h3>
+			
+			
+			<div th:switch="${role}">
+				<span th:case="'[Doctor]'" class="link"><a th:href="@{/doctorPage}">Home</a></span>
+				<span th:case="'[Head]'" class="link"><a th:href="@{/headPage}">Home</a></span>
+			</div>
+			
+			<div class="tablePart" >
+				<h3>Diagnosis Report</h3>
+				<p th:utext="${'[Patient Name: '+patientName+']  [ Patient Age: '+ patientAge +']  [ Patient Gender: '+ patientGender+']'}"></p>
+			   
+			  <form action="#" th:action="@{__${#httpServletRequest.requestURI}__}" th:object="${diagnosis}" method="post">
+			    
+			    
+			    Patient ID: <input th:field="*{patientId}" readonly><br><br>
+				Prepare Doctor ID: <input th:if="${role=='[Doctor]'}" type="text" th:field="*{preDoctorId}" placeholder="Prepared Doctor Id" readonly><br><br>
+				Referred Doctor:<input type="text" th:field="*{refDoctor}" placeholder="Reffered Doctor name and speciality" readonly><br><br>
+			  	<table th:if="${role=='[Doctor]'}">
+			  		<tr>
+			  		    <th>Serial</th>
+			  			<th>Test Name</th>
+			  			<th>Test Discussion</th>
+			  		</tr>
+			  		 <tr>
+			  		 	<td>1</td>
+			  		 	<td><input type="text" th:field="*{test1}" placeholder="Test Name"></td>
+			  		 	<td><textarea th:field="*{test1Discussion}" rows="5" cols="50" name="extra" placeholder="[1.subtest: Result: Normal: ][Discusion of test: ]"></textarea>
+				<br><br></td>
+			  		 
+			  		 </tr>
+			  		 
+			  		 <tr>
+			  		 	<td>2</td>
+			  		 	<td><input type="text" th:field="*{test2}" placeholder="Test Name"></td>
+			  		 	<td><textarea th:field="*{test2Discussion}" rows="5" cols="50" name="extra" placeholder="[1.subtest: Result: Normal:][Discusion of test: ]"></textarea>
+				<br><br></td>
+			  		 
+			  		 </tr>
+			  		 
+			  		 <tr>
+			  		 	<td>3</td>
+			  		 	<td><input type="text" th:field="*{test3}" placeholder="Test Name"></td>
+			  		 	<td><textarea th:field="*{test3Discussion}" rows="5" cols="50" name="extra" placeholder="[1.subtest: Result: Normal:][Discusion of test: ]"></textarea>
+				<br><br></td>
+			  		 
+			  		 </tr>
+			  		 
+			  		 <tr>
+			  		 	<td>4</td>
+			  		 	<td><input type="text" th:field="*{test4}" placeholder="Test Name"></td>
+			  		 	<td><textarea th:field="*{test4Discussion}" rows="5" cols="50" name="extra" placeholder="[1.subtest: Result: Normal: ][Discusion of test: ]"></textarea>
+				<br><br></td>
+			  		 
+			  		 </tr>
+			  		 
+			  		 <tr>
+			  		 	<td>5</td>
+			  		 	<td><input type="text" th:field="*{test5}" placeholder="Test Name"></td>
+			  		 	<td><textarea th:field="*{test5Discussion}" rows="5" cols="50" name="extra" placeholder="[1.subtest: Result: Normal: ][Discusion of test: ]"></textarea>
+				<br><br></td>
+			  		 
+			  		 </tr>
+			  		 
+			  		 <tr>
+			  		 	<td>6</td>
+			  		 	<td><input type="text" th:field="*{test6}" placeholder="Test Name"></td>
+			  		 	<td><textarea th:field="*{test6Discussion}" rows="5" cols="50" name="extra" placeholder="[1.subtest: Result: Normal: ][Discusion of test: ]"></textarea>
+				<br><br></td>
+			  		 
+			  		 </tr>
+			  		 
+			  		 <tr>
+			  		 	<td>7</td>
+			  		 	<td><input type="text" th:field="*{test7}" placeholder="Test Name"></td>
+			  		 	<td><textarea th:field="*{test7Discussion}" rows="5" cols="50" name="extra" placeholder="[1.subtest: Result: Normal:][Discusion of test: ]"></textarea>
+				<br><br></td>
+			  		 
+			  		 </tr>
+			  		 
+			  		 <tr>
+			  		 	<td>8</td>
+			  		 	<td><input type="text" th:field="*{test8}" placeholder="Test Name"></td>
+			  		 	<td><textarea th:field="*{test8Discussion}" rows="5" cols="50" name="extra" placeholder="[1.subtest: Result: Normal:][Discusion of test: ]"></textarea>
+				<br><br></td>
+			  		 
+			  		 </tr>
+			  		 
+			  		 <tr>
+			  		 	<td>9</td>
+			  		 	<td><input type="text" th:field="*{test9}" placeholder="Test Name"></td>
+			  		 	<td><textarea th:field="*{test9Discussion}" rows="5" cols="50" name="extra" placeholder="[1.subtest: Result: Normal: ][Discusion of test: ]"></textarea>
+				<br><br></td>
+			  		 
+			  		 </tr>
+			  		 
+			  		 <tr>
+			  		 	<td>10</td>
+			  		 	<td><input type="text" th:field="*{test10}" placeholder="Test Name"></td>
+			  		 	<td><textarea th:field="*{test10Discussion}" rows="5" cols="50" name="extra" placeholder="[1.subtest: Result: Normal: ][Discusion of test: ]"></textarea>
+				<br><br></td>
+			  		 
+			  		 </tr>
+			  	
+			  	
+			  	</table>
+			  	
+			  	
+				
+				
+				<br><br>
+				<input type="submit" value="SUBMIT" id="submit">
+				<br><br>
+				<span id="emessage" th:utext="${errorMessage}"></span>
+				<span id="smessage" th:utext="${successMessage}"></span>
+				
+				<div th:if="${(bindingResult!=null && bindingResult.getAllErrors()!=null)}">
+					<ul th:each="data: ${bindingResult.getAllErrors()}">
+					<li th:text="${data.getObjectName()+}'::'+data.getDefaultMessage()}"></li>
+					
+					</ul>
+				
+				</div>
+               </form>
+			</div>
+
+
+		</div>
+
+		<div class="date">
+			<p id="demo"></p>
+		</div>
+
+	</div>
+
+
+	<script type="text/javascript">
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+	</script>
+	
+	
+    
+   
+
+
+</body>
+</html>
