@@ -9,3 +9,9 @@
 
 # Resourses<br>
 1. Background image- http://www.jicjo.com/Portals/Portal1/Upload/Block/Image/medical-2.jpg
+
+# Team Members: 
+1. Maksudul Hoque Aubhi                        
+2. Afsari Sultana Rubaba                        
+3. Sayeda Sharmin Sultana Suchi          
+4. Md. Nazim Uddin 
