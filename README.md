@@ -1,5 +1,5 @@
 # Medical Information Management System
-# University Project (6th Semester) - Software Development Project 2(SDP2) 
+## University Project (6th Semester) - Software Development Project 2(SDP2) 
 # Tools<br>
 1. Spring boot <br>
 2. Java
