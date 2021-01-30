@@ -1,5 +1,5 @@
 # Medical Information Management System
-# University Project - Software Development Project 2(SDP2) 
+# University Project (6th Semester) - Software Development Project 2(SDP2) 
 # Tools<br>
 1. Spring boot <br>
 2. Java
@@ -14,6 +14,7 @@
 # Resourses<br>
 1. Background image- http://www.jicjo.com/Portals/Portal1/Upload/Block/Image/medical-2.jpg
 
+# Team Name: CodeKhata
 # Team Members: 
 1. Maksudul Hoque Aubhi                        
 2. Afsari Sultana Rubaba                        
