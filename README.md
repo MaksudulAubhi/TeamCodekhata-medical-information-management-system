@@ -23,7 +23,7 @@
 4. User restriction (doctor can access doctorPage but can't access adminPage.)
 5. Data encryption with AES(Advanced Encryption System)
 6. Sent Email
-7. Role Based System
+7. Role Based System, others
 
 # Resourses<br>
 1. Background image- http://www.jicjo.com/Portals/Portal1/Upload/Block/Image/medical-2.jpg
