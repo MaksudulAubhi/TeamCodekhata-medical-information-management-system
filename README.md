@@ -15,6 +15,7 @@
 3. Thymeleaf <br>
 4. MySQL
 5. MVC
+6. HTML, CSS, JavaScript
 
 # Worklist<br>
 1. User registration
